@@ -1,20 +1,20 @@
 # Setting up efficient and reproducible command-line R
 
 RStudio is really nice. However it is difficult to set up to run using an
-arbitrary conda environment and difficult to run from an interactive node on
-biowulf.
+arbitrary conda environment and difficult to run from a cloud instance or an
+interactive node on an HPC cluster.
 
-As a result, we tend to run RStudio locally and work on the mapped drive. This
-can cause permission issues on the mapped drive, and symlinks don't work, but
-worse is that we each have separate sets of R packages locally installed and so
-we cannot easily test each others' code.
+As a result, we tend to run RStudio locally and work on the group network
+share. This can cause permission issues on the network share, and symlinks
+don't work, but worse is that we each have separate sets of R packages locally
+installed and so we cannot easily test each others' code.
 
 The plain vanilla solution would be a text editor in one window and an open
 R interpreter in the other. Then copy/paste from one to the other.
 
 Below are instructions for setting up and using R from the terminal that is as
-powerful than RStudio, can run in just a terminal (so from biowulf interactive
-nodes), and can use arbitrary conda envs.
+powerful than RStudio, can run in just a terminal (so from interactive nodes),
+and can use arbitrary conda envs.
 
 - streamlined copy/pasting since everything's in vim
 - syntax highlighting for R code in RMarkdown code chunks
@@ -25,7 +25,8 @@ nodes), and can use arbitrary conda envs.
 
 # Neovim
 
-This part's pretty easy, it's already installed on Biowulf.
+If you are using [Biowulf](https://hpc.nih.gov), it's already installed but you
+need to load the module.
 
 I put the following in my `.bashrc` on Biowulf, so any time I log in I'll
 always use nvim:
@@ -34,22 +35,6 @@ always use nvim:
 module load neovim
 alias vim="nvim"
 ```
-
-# Using daler/dotfiles?
-
-```bash
-cd dotfiles
-git pull origin master
-cp .config/nvim/init.vim ~/.config/nvim/init.vim
-```
-
-Then open nvim, and run:
-
-```
-:PlugInstall
-```
-
-You're good to go; skip down to the "Radian" and "Workflow" sections.
 
 # One-time installation of plugin manager
 
@@ -66,23 +51,38 @@ wget -O - https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim > 
 
 # Configuration
 
-Neovim's config file lives in `~/.config/nvim/init.vim`. If you have a nicely
-customized `.vimrc`, just copy it over, nvim is backwards compatible with vim.
+Neovim's config file lives in `~/.config/nvim/init.vim`.
 
-My [dotfiles](https://github.com/daler/dotfiles) repo has a full `init.vim`
-configuration, but I've copied only the parts relevant to running R in neovim
-here. 
+If you have a nicely customized `.vimrc`, just copy it over, nvim is backwards
+compatible with vim.
 
-Then you'll need to copy the contents of this repo's `init.vim` to use neoterm.
+Otherwise, copy the contents of this repo's `init.vim` to use neoterm.
 
+```bash
+mkdir -p .config/nvim
+wget -O - \
+  https://raw.githubusercontent.com/NICHD-BSPC/r-setup/master/init.vim \
+  ~/.config/nvim/init.vim
+```
+
+The file is well-commented so you can see what's going on.
 
 # Workflow
+
+## Connecting
+
+To make sure that plots show up, make sure you're connecting with X11 forwarding.
+
+If you will be working on Biowulf see the [biowulf
+docs](https://hpc.nih.gov/docs/connect.html) on this.
+
 
 ## Initial setup
 
 1. Open or create a new RMarkdown file with nvim
-2. `,t` to open a terminal
-3. `,w` to move over to the terminal and enter insert mode.
+2. <kbd>,</kbd><kbd>t</kbd> to open a terminal
+3. `,w` to move over to the terminal and enter insert mode. You can also use
+   `Alt-w`.
 4. In the terminal, source activate your environment
 5. Start R in the terminal
 6. `<Esc>,q` to go back to the RMarkdown
