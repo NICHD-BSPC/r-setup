@@ -116,6 +116,8 @@ Sometimes text gets garbled when using an interactive node on biowulf. This is
 due to a known bug in Slurm, but Biowulf is not intending on updating any time
 soon. The fix is `Ctrl-L` either in the Rmd buffer or in the terminal buffer.
 
+Remember that the terminal is a vim window, so to enter commands you need to be
+in insert mode.
 
 ## Folding
 
