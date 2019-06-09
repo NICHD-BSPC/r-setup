@@ -76,16 +76,29 @@ To make sure that plots show up, make sure you're connecting with X11 forwarding
 If you will be working on Biowulf see the [biowulf
 docs](https://hpc.nih.gov/docs/connect.html) on this.
 
+## Shortcuts
+
+| mapping                              | works in mode    | description                                                               |
+|--------------------------------------|------------------|---------------------------------------------------------------------------|
+| <kbd>,</kbd><kbd>t</kbd>             | normal           | Open a new terminal window to the right                                   |
+| <kbd>Alt</kbd><kbd>w</kbd>           | normal or insert | Move to terminal window on right and enter insert mode                    |
+| <kbd>,</kbd><kbd>w</kbd>             | normal           | Move to terminal on right and enter insert mode                           |
+| <kbd>Alt</kbd><kbd>q</kbd>           | normal or insert | Move to buffer on left and enter normal mode                              |
+| <kbd>,</kbd><kbd>q</kbd>             | normal           | Move to buffer on left and enter normal mode                              |
+| <kbd>g</kbd><kbd>x</kbd>             | visual           | Send selection to terminal                                                |
+| <kbd>g</kbd><kbd>x</kbd><kbd>x</kbd> | normal           | Send current line to terminal                                             |
+| <kbd>,</kbd><kbd>c</kbd><kbd>d</kbd> | normal           | Send current Rmarkdown code chunk to terminal and move to next code chunk |
+| <kbd>,</kbd><kbd>k</kbd>             | normal           | Render current RMarkdown as HTML                                          |
 
 ## Initial setup
 
 1. Open or create a new RMarkdown file with nvim
-2. <kbd>,</kbd><kbd>t</kbd> to open a terminal
-3. `,w` to move over to the terminal and enter insert mode. You can also use
-   `Alt-w`.
+2. Open a neoterm terminal to the right (`,t`)
+3. Move to that terminal (`Alt-w`).
 4. In the terminal, source activate your environment
 5. Start R in the terminal
-6. `<Esc>,q` to go back to the RMarkdown
+6. Go back to the RMarkdown or R script, and use the commands above to send
+   lines over.
 
 ## Working with R
 
