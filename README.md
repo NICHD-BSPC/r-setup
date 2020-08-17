@@ -41,7 +41,7 @@ alias vim="nvim"
 There are some amazing plugins out there for nvim. To use them, you'll need
 a plugin manager. The one I use is `vim-plug`. You need to download `plug.vim`
 and save it as `~/.local/share/nvim/site/autoload/plug.vim`. Or run the
-following commands:
+following commands in `bash`:
 
 ```bash
 dest=~/.local/share/nvim/site/autoload/plug.vim
@@ -56,7 +56,7 @@ Neovim's config file lives in `~/.config/nvim/init.vim`.
 If you have a nicely customized `.vimrc`, just copy it over, nvim is backwards
 compatible with vim.
 
-Otherwise, copy the contents of this repo's `init.vim` to use neoterm.
+Otherwise, copy the contents of this repo's `init.vim` to use neoterm. In `bash`:
 
 ```bash
 mkdir -p .config/nvim
