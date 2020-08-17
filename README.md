@@ -62,7 +62,7 @@ Otherwise, copy the contents of this repo's `init.vim` to use neoterm. In `bash`
 mkdir -p .config/nvim
 wget -O - \
   https://raw.githubusercontent.com/NICHD-BSPC/r-setup/master/init.vim \
-  ~/.config/nvim/init.vim
+  > ~/.config/nvim/init.vim
 ```
 
 The file is well-commented so you can see what's going on.
